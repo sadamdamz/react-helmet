@@ -8,8 +8,8 @@ const app = express();
 const port = 3000;
 import Routes from "./routes";
 import { Helmet } from "react-helmet";
+
 const HTML = (req, context) => {
-  // console.log(req)
   const body =renderToString(
     <Router location={req.url} context={context}>
       <App />
@@ -39,14 +39,16 @@ const context = {};
 app.use(express.static("dist"));
 
 app.get("*", (req, res) => {
+
   return res.send(HTML({ url: req.url }, context));
 });
 
 Routes.forEach((route) => {
-  // console.log(route)
   app.get(route.url, (req, res) => {
     return res.send(HTML(req, context));
   });
 });
+
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

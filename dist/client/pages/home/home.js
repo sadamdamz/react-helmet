@@ -35,30 +35,32 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var About = /*#__PURE__*/function (_Component) {
-  _inherits(About, _Component);
+var Home = /*#__PURE__*/function (_Component) {
+  _inherits(Home, _Component);
 
-  var _super = _createSuper(About);
+  var _super = _createSuper(Home);
 
-  function About() {
-    _classCallCheck(this, About);
+  function Home() {
+    _classCallCheck(this, Home);
 
     return _super.apply(this, arguments);
   }
 
-  _createClass(About, [{
+  _createClass(Home, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/_react["default"].createElement(_react.Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactHelmet.Helmet, null, /*#__PURE__*/_react["default"].createElement("meta", {
         charSet: "utf-8"
-      }), /*#__PURE__*/_react["default"].createElement("title", null, "About"), /*#__PURE__*/_react["default"].createElement("link", {
+      }), /*#__PURE__*/_react["default"].createElement("title", null, "Home page "), /*#__PURE__*/_react["default"].createElement("link", {
         rel: "canonical",
         href: "http://mysite.com/example"
-      })), /*#__PURE__*/_react["default"].createElement("p", null, "this is About"));
+      })), /*#__PURE__*/_react["default"].createElement("p", {
+        className: "padding"
+      }, "this is home "));
     }
   }]);
 
-  return About;
+  return Home;
 }(_react.Component);
 
-exports["default"] = About;
+exports["default"] = Home;

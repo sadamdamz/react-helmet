@@ -1,18 +1,15 @@
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = [
 	{
+		mode:"none",
 		externals: ["react-helmet"],
 		entry: {
 			client: "./src/client/index.js"
 		},
 		output: {
-			path: path.resolve(__dirname, "dist"),
+			path: path.resolve(__dirname),
 			filename: "[name].js"
 		},
-		devServer: {
-			contentBase: "./dist"
-	},
 		module: {
 			rules: [
 				{
@@ -20,7 +17,25 @@ module.exports = [
 					exclude: /node_modules/,
 					use: {
 						loader: "babel-loader"
-					}
+					},
+					
+					// use: ['style-loader', 'css-loader']
+				},
+				{
+					test: /\.css$/,
+					use: [
+						{
+							loader: 'style-loader'
+						},
+						{
+							loader: 'css-loader',
+							options: {
+								modules: true,
+								localsConvention: 'camelCase',
+								sourceMap: true
+							}
+						}
+					]
 				}
 			]
 		}
@@ -38,7 +53,7 @@ module.exports = [
 			net: "empty",
 		},
 		output: {
-			path: path.resolve(__dirname),
+			path: path.resolve(__dirname,"dist"),
 			filename: "[name].js"
 		},
 		module: {
@@ -48,14 +63,26 @@ module.exports = [
 					exclude: /node_modules/,
 					use: {
 						loader: "babel-loader"
-					}
+					},
+					// use: ['style-loader', 'css-loader']
+				},
+				{
+					test: /\.css$/,
+					use: [
+						{
+							loader: 'style-loader'
+						},
+						{
+							loader: 'css-loader',
+							options: {
+								modules: true,
+								localsConvention: 'camelCase',
+								sourceMap: true
+							}
+						}
+					]
 				}
 			]
-		},
-		plugins: [
-			new HtmlWebpackPlugin({
-				template:  path.resolve('./index.html'),
-			}),
-		]
-	}
+		}
+}
 ];
